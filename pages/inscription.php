@@ -38,7 +38,7 @@ if(isset($_POST["submit"]))
         $error = "Tous les champs ne sont vides !";
     }
 }
-
+$bdd = null;
 ?>
 <!DOCTYPE html>
 <html lang="fr">

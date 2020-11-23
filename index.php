@@ -16,11 +16,6 @@
 <main>
     <article>
         <h1><span>Barber Shop</span> <br>Chez Kotoko</h1>
-   <!--     <p>Les cheveux crépus demandent des soins et un savoir-faire spécifiques, avec notamment des
-            gestes techniques propres à un défrisage ou à des tresses. </p>-->
-      <!--  <div class="conteneur1">
-            <div class="d1"></div>
-        </div>-->
         <section class="flex-container">
 
             <article class="flexrow-container">
