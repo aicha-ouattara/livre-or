@@ -1,3 +1,34 @@
+<?php
+session_start();
+$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
+
+if(isset($_SESSION["id"]))
+{
+    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ? ");
+    $req->execute(array($_SESSION["id"]));
+    $userinfo = $req->fetch();
+
+    if(isset($_POST["submit"]))
+    {
+        if(!empty($_POST["description"]) AND isset($_POST["description"]))
+        {
+            $id_utilisateur = $userinfo["id"];
+            $description= htmlspecialchars($_POST["description"]);
+            $date = date('Y/m/d H:i:s');
+
+            $req = $bdd->prepare('INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES (?,?,?)');
+            $req->execute(array( $description, $id_utilisateur,$date));
+            $error ="Vous avez bien commenté";
+        }
+        else
+        {
+            $error ="Vous n'avez pas laissez de commentaires";
+        }
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,7 +47,7 @@
     <article>
         <!--Debut form -->
         <form method="post" action="">
-            <h1>Vous avez aimé votre coiffure ? laissez-nous votre avis !</h1>
+            <h1><?php echo $userinfo['login']; ?>Vous avez aimé votre coiffure ? laissez-nous votre avis !</h1>
             <div class="formflex">
                 <div>
                     <!--<label for="description">Commentaires</label>-->
@@ -25,6 +56,12 @@
 
                 <input type="submit" name="submit" value="Commentes !">
             </div>
+            <?php
+            if(isset($error))
+            {
+                echo $error;
+            }
+            ?>
         </form>
         <!--End form -->
     </article>

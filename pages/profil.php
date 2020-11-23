@@ -5,10 +5,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
 
 if (isset($_SESSION["id"]))
 {
-    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ? ");
-    $req->execute(array($_SESSION["id"]));
-    $userinfo = $req->fetch();
-
     if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $_POST['newlogin'] != $userinfo['login']) {
         $newlogin = htmlspecialchars($_POST['newlogin']);
         $req = $bdd->prepare("UPDATE utilisateurs SET login = ? WHERE id = ?");
@@ -21,10 +17,9 @@ if (isset($_SESSION["id"]))
         $req->execute(array($password3, $_SESSION['id']));
     }
 
-
-
-
-
+    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ? ");
+    $req->execute(array($_SESSION["id"]));
+    $userinfo = $req->fetch();
 
 
     $bdd = null;
@@ -69,6 +64,7 @@ if (isset($_SESSION["id"]))
     <nav class="nav">
         <a href="../">Accueil</a>
         <a href="livre-or.php">Livre d'or</a>
+        <a href="commentaire.php">commentaires</a>
     </nav>
 </footer>
 </body>

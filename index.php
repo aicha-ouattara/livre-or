@@ -11,6 +11,7 @@
         <a href="index.php">Accueil</a>
         <a href="pages/inscription.php">Inscription</a>
         <a href="pages/connexion.php">Connexion</a>
+        <a href="pages/livre-or.php">Livre or</a>
     </nav>
 </header>
 <main>
