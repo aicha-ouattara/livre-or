@@ -1,3 +1,35 @@
+<?php
+session_start();
+
+$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
+
+if (isset($_SESSION["id"]))
+{
+    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ? ");
+    $req->execute(array($_SESSION["id"]));
+    $userinfo = $req->fetch();
+
+    if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $_POST['newlogin'] != $userinfo['login']) {
+        $newlogin = htmlspecialchars($_POST['newlogin']);
+        $req = $bdd->prepare("UPDATE utilisateurs SET login = ? WHERE id = ?");
+        $req->execute(array($newlogin, $_SESSION['id']));
+    }
+    if(isset($_POST['newpassword']) AND !empty($_POST['newpassword']) AND $_POST['newpassword'] != $userinfo['password']) {
+        $newpassword = ($_POST['newpassword']);
+        $password3 = password_hash( $newpassword, PASSWORD_BCRYPT, array('cost' => 10));
+        $req = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+        $req->execute(array($password3, $_SESSION['id']));
+    }
+
+
+
+
+
+
+
+    $bdd = null;
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,16 +47,16 @@
     <article>
         <!--Debut form -->
         <form method="post" action="">
-            <h1>Modifie ton profil et/ou dirige toi vers notre livre d'or !</h1>
+            <h1><?php echo $userinfo['login']; ?>Modifie ton profil et/ou dirige toi vers notre livre d'or !</h1>
             <div class="formflex">
                 <div>
                     <!-- <label for="login">Login</label>-->
-                    <input type="text" name="login" id="login" placeholder="votre login" required>
+                    <input type="text" name="newlogin" id="login" placeholder="votre login">
                 </div>
 
                 <div>
                     <!--<label for="password">Mot de passe</label>-->
-                    <input type="password" name="password" id="password" placeholder="Votre mot de passe " required>
+                    <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe ">
                 </div>
 
                 <input type="submit" name="submit" value="Modifie">
