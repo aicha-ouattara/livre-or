@@ -2,15 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title>Accueil</title>
 </head>
 <body>
 <header>
     <nav>
-        <a href="/">Accueil</a>
-        <a href="/">Inscription</a>
-        <a href="/">Connexion</a>
+        <a href="index.php">Accueil</a>
+        <a href="pages/inscription.php">Inscription</a>
+        <a href="pages/connexion.php">Connexion</a>
     </nav>
 </header>
 <main>
