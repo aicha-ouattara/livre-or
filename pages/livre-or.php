@@ -13,7 +13,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
 <body>
 <header>
     <nav class="nav">
-
         <a href='../index.php'>Accueil</a>
         <a href='livre-or.php'>Livre d'or</a>
         <?php if (isset($_SESSION['id'])) { ?>

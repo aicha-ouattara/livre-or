@@ -197,3 +197,8 @@ h1
 {
     text-decoration: underline;
 }
+span
+{
+    color: mediumvioletred;
+    text-decoration: none;
+}

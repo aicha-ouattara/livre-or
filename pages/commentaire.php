@@ -47,7 +47,7 @@ if(isset($_SESSION["id"]))
     <article>
         <!--Debut form -->
         <form method="post" action="">
-            <h1><?php echo $userinfo['login']; ?> Vous avez aimé votre coiffure ? laissez-nous votre avis !</h1>
+            <h1><?php echo "<span>".$userinfo['login']."</span>"; ?> Vous avez aimé votre coiffure ? laissez-nous votre avis !</h1>
             <div class="formflex">
                 <div>
                     <!--<label for="description">Commentaires</label>-->

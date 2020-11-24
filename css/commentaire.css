@@ -217,3 +217,8 @@ textarea
     font-family: 'Nerko One', cursive;
 
 }
+span
+{
+    color: mediumvioletred;
+    text-decoration: none;
+}
