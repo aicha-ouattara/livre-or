@@ -8,6 +8,8 @@
 <body>
 <header>
     <nav class="nav">
+
+        <!--Nav PHP-->
         <a href='index.php'>Accueil</a>
         <a href='pages/livre-or.php'>Livre d'or</a>
         <?php if (isset($_SESSION['id'])) { ?>
@@ -21,6 +23,8 @@
         <?php } else { ?>
             <a href="pages/connexion.php">Connexion</a>
         <?php } ?>
+        <!--Nav PHP-->
+
     </nav>
 </header>
 <main>

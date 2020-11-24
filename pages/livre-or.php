@@ -1,8 +1,9 @@
 <?php
-session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
+session_start(); //Session connexion
+$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); //Database connexion
 ?>
 
+<!--Debut Display-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,6 +16,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
     <nav class="nav">
         <a href='../index.php'>Accueil</a>
         <a href='livre-or.php'>Livre d'or</a>
+
+         <!--Nav PHP-->
         <?php if (isset($_SESSION['id'])) { ?>
             <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
             <a href="commentaire.php?id=" <?php $_SESSION['id'] ?>>Commentaires</a>
@@ -26,11 +29,13 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
         <?php } else { ?>
             <a href="connexion.php">Connexion</a>
         <?php } ?>
+        <!--Nav PHP-->
+
     </nav>
 </header>
 <main>
     <article>
-        <?php
+        <?php //Request for the information from the two tables
         $req = $bdd->prepare("SELECT commentaires.commentaire, commentaires.date, utilisateurs.login FROM commentaires INNER JOIN utilisateurs WHERE commentaires.id_utilisateur = utilisateurs.id ORDER BY commentaires.id DESC");
         $req-> execute();
         $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +43,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
     </article>
 
     <article>
-        <?php
+        <?php //Loop for display
         foreach  ($resultat as $row)
         {
             $date=date('d/m/Y', strtotime($row["date"]));
@@ -48,7 +53,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
     </article>
 
     <article class="a">
-        <?php
+        <?php //Display for the button if someone is connected
         if (isset($_SESSION['id'])) {
 
             echo "<a href=commentaire.php><p> Commenter votre Coiffure !</p> </a>";
@@ -63,4 +68,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
 <footer></footer>
 </body>
 </html>
+
+<!--End Display-->
 

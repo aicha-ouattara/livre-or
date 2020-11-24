@@ -1,7 +1,6 @@
 <?php
-session_start();
-
-$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
+session_start(); //Session connexion
+$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); //Database connexion
 
 if(isset($_POST['submit'])) {
     $login = htmlspecialchars($_POST['login']);
@@ -12,7 +11,7 @@ if(isset($_POST['submit'])) {
         $req->execute(array($login));
         $users = $req->rowCount();
 
-        if ($users == 1) {
+        if ($users == 1) { //If we found one login, connect ...
             $userinfo = $req->fetch();
             $_SESSION["id"] = $userinfo["id"];
             $_SESSION["login"] = $userinfo["login"];
@@ -20,23 +19,31 @@ if(isset($_POST['submit'])) {
 
             $verify = password_verify($password, $userinfo['password']);
 
-            if ($verify) {
-                // Verification if user is an admin or an user
+            if ($verify)
+            {
                 header("Location:profil.php?id=" . $_SESSION["id"]);
-            } else {
-                $error = "Le login ou le mot de passe est incorrect.";
             }
-        } else {
+            else
+                {
+                $error = "Le login ou le mot de passe est incorrect.";
+                }
+        } else
+            {
             $error = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-        }
+            }
 
-    } else {
+    } else
+        {
         $error = "Tous les champs ne sont pas remplis !";
-    }
+        }
 }
 
 $bdd = null;
 ?>
+
+
+<!--Debut Display-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -81,6 +88,7 @@ $bdd = null;
 <footer>
     <nav class="nav">
 
+        <!--Nav PHP-->
             <a href='../index.php'>Accueil</a>
             <a href='livre-or.php'>Livre d'or</a>
             <?php if (isset($_SESSION['id'])) { ?>
@@ -94,7 +102,12 @@ $bdd = null;
             <?php } else { ?>
                 <a href="connexion.php">Connexion</a>
             <?php } ?>
+        <!--Nav PHP-->
+
     </nav>
 </footer>
 </body>
 </html>
+
+<!--End Display-->
+

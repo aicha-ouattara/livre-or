@@ -1,6 +1,6 @@
 <?php
-session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
+session_start(); //Session connexion
+$bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); //Database connexion
 
 if(isset($_SESSION["id"]))
 {
@@ -28,6 +28,8 @@ if(isset($_SESSION["id"]))
 }
 
 ?>
+
+<!--Debut Display-->
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -68,6 +70,8 @@ if(isset($_SESSION["id"]))
 </main>
 <footer>
     <nav class="nav">
+
+        <!--Nav PHP-->
         <a href='../index.php'>Accueil</a>
         <a href='livre-or.php'>Livre d'or</a>
         <?php if (isset($_SESSION['id'])) { ?>
@@ -81,7 +85,11 @@ if(isset($_SESSION["id"]))
         <?php } else { ?>
             <a href="connexion.php">Connexion</a>
         <?php } ?>
+        <!--Nav PHP-->
+
     </nav>
 </footer>
 </body>
 </html>
+
+<!--End Display-->
