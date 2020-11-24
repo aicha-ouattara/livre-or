@@ -61,16 +61,16 @@ $bdd = null;
                 <div class="formflex">
                     <div>
 <!--                        <label for="login">Login</label>-->
-                        <input type="text" name="login" id="login" placeholder="votre login" required>
+                        <input type="text" name="login" id="login" placeholder="votre login" required  minlength="3" maxlength="255" >
                     </div>
 
                     <div>
 <!--                        <label for="password">Mot de passe</label>-->
-                        <input type="password" name="password" id="password" placeholder="Votre mot de passe " required>
+                        <input type="password" name="password" id="password" placeholder="Votre mot de passe " required  minlength="3" maxlength="255" >
                     </div>
                     <div>
 <!--                        <label for="password2">Confirmation du mot de passe</label>-->
-                        <input type="password" name="password2" id="password2" placeholder="Confirmation du mot de passe " required>
+                        <input type="password" name="password2" id="password2" placeholder="Confirmation du mot de passe " required  minlength="3" maxlength="255" >
                     </div>
                     <input type="submit" name="submit" value="Inscription">
                 </div>

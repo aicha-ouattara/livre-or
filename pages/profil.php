@@ -46,12 +46,12 @@ if (isset($_SESSION["id"]))
             <div class="formflex">
                 <div>
                     <!-- <label for="login">Login</label>-->
-                    <input type="text" name="newlogin" id="login" placeholder="votre login">
+                    <input type="text" name="newlogin" id="login" placeholder="votre login" minlength="3" maxlength="255" >
                 </div>
 
                 <div>
                     <!--<label for="password">Mot de passe</label>-->
-                    <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe ">
+                    <input type="password" name="newpassword" id="password" placeholder="Votre mot de passe "  minlength="3" maxlength="255" >
                 </div>
 
                 <input type="submit" name="submit" value="Modifie">

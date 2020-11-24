@@ -51,7 +51,7 @@ if(isset($_SESSION["id"]))
             <div class="formflex">
                 <div>
                     <!--<label for="description">Commentaires</label>-->
-                    <textarea id="description" name="description" rows="8" cols="60" placeholder="Ecris !"></textarea>
+                    <textarea id="description" name="description" rows="8" cols="60" placeholder="Ecris !"  minlength="3" maxlength="255" ></textarea>
                 </div>
 
                 <input type="submit" name="submit" value="Commentes !">
