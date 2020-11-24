@@ -4,21 +4,24 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); 
 
 if (isset($_SESSION["id"]))
 {
+    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ? ");
+    $req->execute(array($_SESSION["id"]));
+    $userinfo = $req->fetch();
+
+
     if(isset($_POST['newlogin']) AND !empty($_POST['newlogin']) AND $_POST['newlogin'] != $userinfo['login']) {
         $newlogin = htmlspecialchars($_POST['newlogin']);
         $req = $bdd->prepare("UPDATE utilisateurs SET login = ? WHERE id = ?");
         $req->execute(array($newlogin, $_SESSION['id']));
+        $msg = "Votre profil a été bien modifié !";
     }
     if(isset($_POST['newpassword']) AND !empty($_POST['newpassword']) AND $_POST['newpassword'] != $userinfo['password']) {
         $newpassword = ($_POST['newpassword']);
         $password3 = password_hash( $newpassword, PASSWORD_BCRYPT, array('cost' => 10));
         $req = $bdd->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
         $req->execute(array($password3, $_SESSION['id']));
+        $msg = "Votre profil a été bien modifié !";
     }
-
-    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ? ");
-    $req->execute(array($_SESSION["id"]));
-    $userinfo = $req->fetch();
 
 
     $bdd = null;
@@ -58,6 +61,12 @@ if (isset($_SESSION["id"]))
 
                 <input type="submit" name="submit" value="Modifie">
             </div>
+            <?php
+            if(isset($msg))
+            {
+                echo $msg;
+            }
+            ?>
         </form>
         <!--End form -->
     </article>
