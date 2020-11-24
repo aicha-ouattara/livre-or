@@ -3,19 +3,16 @@ session_start();
 
 $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
 
-if(isset($_POST['submit']))
-{
+if(isset($_POST['submit'])) {
     $login = htmlspecialchars($_POST['login']);
     $password = ($_POST['password']);
 
-    if (!empty($login) AND !empty($password))
-    {
+    if (!empty($login) and !empty($password)) {
         $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? ");
         $req->execute(array($login));
         $users = $req->rowCount();
 
-        if($users == 1)
-        {
+        if ($users == 1) {
             $userinfo = $req->fetch();
             $_SESSION["id"] = $userinfo["id"];
             $_SESSION["login"] = $userinfo["login"];
@@ -23,27 +20,20 @@ if(isset($_POST['submit']))
 
             $verify = password_verify($password, $userinfo['password']);
 
-            if ($verify)
-            {
+            if ($verify) {
                 // Verification if user is an admin or an user
                 header("Location:profil.php?id=" . $_SESSION["id"]);
+            } else {
+                $error = "Le login ou le mot de passe est incorrect.";
             }
-        }
-            else
-            {
-            $error = "Le login ou le mot de passe est incorrect.";
-            }
-    }
-        else
-        {
+        } else {
             $error = "Le nom d'utilisateur ou le mot de passe est incorrect.";
         }
 
-    }
-    else
-    {
+    } else {
         $error = "Tous les champs ne sont pas remplis !";
     }
+}
 
 $bdd = null;
 ?>
@@ -63,7 +53,7 @@ $bdd = null;
 <main>
     <article>
         <!--Debut form -->
-        <form method="post" action="">
+        <form method="post" action="connexion.php">
             <h1>Connecte-toi !</h1>
             <div class="formflex">
                 <div>

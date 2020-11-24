@@ -14,7 +14,7 @@ if(isset($_SESSION["id"]))
         {
             $id_utilisateur = $userinfo["id"];
             $description= htmlspecialchars($_POST["description"]);
-            $date = date('Y/m/d H:i:s');
+            $date=date('Y-m-d h:i:s');
 
             $req = $bdd->prepare('INSERT INTO commentaires (commentaire, id_utilisateur, date) VALUES (?,?,?)');
             $req->execute(array( $description, $id_utilisateur,$date));

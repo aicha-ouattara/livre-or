@@ -56,7 +56,7 @@ $bdd = null;
 <main>
     <article>
         <!--Debut form -->
-        <form method="post" action="">
+        <form method="post" action="inscription.php">
             <h1>Inscris-toi !</h1>
                 <div class="formflex">
                     <div>
