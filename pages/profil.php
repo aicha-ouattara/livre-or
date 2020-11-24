@@ -62,9 +62,20 @@ if (isset($_SESSION["id"]))
 </main>
 <footer>
     <nav class="nav">
-        <a href="../">Accueil</a>
-        <a href="livre-or.php">Livre d'or</a>
-        <a href="commentaire.php">commentaires</a>
+
+        <a href='../index.php'>Accueil</a>
+        <a href='livre-or.php'>Livre d'or</a>
+        <?php if (isset($_SESSION['id'])) { ?>
+            <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+            <a href="commentaire.php?id=" <?php $_SESSION['id'] ?>>Commentaires</a>
+            <?php
+        } else { ?><a href="inscription.php">Inscription</a><?php } ?>
+
+        <?php if (isset($_SESSION['id'])) { ?>
+            <a href="deconnexion.php">Deconnexion</a>
+        <?php } else { ?>
+            <a href="connexion.php">Connexion</a>
+        <?php } ?>
     </nav>
 </footer>
 </body>

@@ -12,11 +12,21 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
 </head>
 <body>
 <header>
-    <nav>
-        <a href="../index.php">Accueil</a>
-        <a href="inscription.php">Inscription</a>
-        <a href="connexion.php">Connexion</a>
-        <a href="livre-or.php">Livre or</a>
+    <nav class="nav">
+
+        <a href='../index.php'>Accueil</a>
+        <a href='livre-or.php'>Livre d'or</a>
+        <?php if (isset($_SESSION['id'])) { ?>
+            <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
+            <a href="commentaire.php?id=" <?php $_SESSION['id'] ?>>Commentaires</a>
+            <?php
+        } else { ?><a href="inscription.php">Inscription</a><?php } ?>
+
+        <?php if (isset($_SESSION['id'])) { ?>
+            <a href="deconnexion.php">Deconnexion</a>
+        <?php } else { ?>
+            <a href="connexion.php">Connexion</a>
+        <?php } ?>
     </nav>
 </header>
 <main>
@@ -28,17 +38,17 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', '');
         ?>
     </article>
 
-    <article class="commentaire">
+    <article>
         <?php
         foreach  ($resultat as $row)
         {
             $date=date('d/m/Y', strtotime($row["date"]));
-            echo 'posté le :' .$date.'<br />'.' par '.$row['login']  . '<br />'    . $row['commentaire']  ."<br>";
+            echo '<div class="commentaire"><p class="date">Posté le :  '.$date.'</p>'.' <p>par : '.$row['login']  . '</p>'    . '<p class="com">'. $row['commentaire']  .'</p></div>';
         }
         ?>
     </article>
 
-    <article>
+    <article class="a">
         <?php
         if (isset($_SESSION['id'])) {
 
