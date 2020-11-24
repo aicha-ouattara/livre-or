@@ -109,26 +109,4 @@ span
     color: white;
 }
 
-/*
-.conteneur1{
-    overflow: hidden;
-    max-width: 960px;
-    margin: 50px auto;
-    box-shadow: 0px 15px 10px -5px #777;
-}
-.d1{
-    width: 3840px;
-    height: 720px;
-    background-color: #EDEDED;
-    background-image: url("images/slide-100.jpg");
-    background-size: contain;
-    animation: defilement1 12s linear infinite;
-}
-@keyframes defilement1{
-    0%{transform: translate(0,0);}
-    100%{transform: translate(-2880px,0);}
-}
 
-.d1:hover{
-    animation-play-state: paused;
-}*/

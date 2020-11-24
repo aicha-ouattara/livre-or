@@ -42,7 +42,7 @@ if (isset($_SESSION["id"]))
     <article>
         <!--Debut form -->
         <form method="post" action="profil.php">
-            <h1><?php echo $userinfo['login']; ?>Modifie ton profil et/ou dirige toi vers notre livre d'or !</h1>
+            <h1><?php echo $userinfo['login']; ?> Modifie ton profil et/ou dirige toi vers notre livre d'or !</h1>
             <div class="formflex">
                 <div>
                     <!-- <label for="login">Login</label>-->

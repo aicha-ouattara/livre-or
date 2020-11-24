@@ -47,7 +47,7 @@ if(isset($_SESSION["id"]))
     <article>
         <!--Debut form -->
         <form method="post" action="">
-            <h1><?php echo $userinfo['login']; ?>Vous avez aimé votre coiffure ? laissez-nous votre avis !</h1>
+            <h1><?php echo $userinfo['login']; ?> Vous avez aimé votre coiffure ? laissez-nous votre avis !</h1>
             <div class="formflex">
                 <div>
                     <!--<label for="description">Commentaires</label>-->
@@ -68,7 +68,6 @@ if(isset($_SESSION["id"]))
 </main>
 <footer>
     <nav class="nav">
-
         <a href='../index.php'>Accueil</a>
         <a href='livre-or.php'>Livre d'or</a>
         <?php if (isset($_SESSION['id'])) { ?>
