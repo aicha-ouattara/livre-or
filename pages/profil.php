@@ -46,6 +46,7 @@ if (isset($_SESSION["id"]))
 <main>
     <article>
         <!--Debut form -->
+
         <form method="post" action="profil.php">
             <h1><?php echo "<span>".$userinfo['login']."</span>"; ?> Modifie ton profil et/ou dirige toi vers notre livre d'or !</h1>
             <div class="formflex">
@@ -68,6 +69,7 @@ if (isset($_SESSION["id"]))
             }
             ?>
         </form>
+
         <!--End form -->
     </article>
 </main>

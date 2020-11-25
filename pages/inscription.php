@@ -1,5 +1,6 @@
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); //Database connexion
+
 if(isset($_POST["submit"]))
 {
     if(!empty($_POST["login"]) AND !empty($_POST["password"]) AND !empty($_POST["password2"])) //Verification if the form is not empty
@@ -7,6 +8,7 @@ if(isset($_POST["submit"]))
         $login = htmlspecialchars($_POST["login"]);
         $password = ($_POST["password"]);
         $password2 = ($_POST["password2"]);
+
         if(isset($_POST['login'])) //If login ...
         {
             $req = $bdd ->prepare('SELECT id FROM utilisateurs WHERE login = ?');  //Request for the verification of login
@@ -59,6 +61,7 @@ $bdd = null;
 <main>
     <article>
         <!--Debut form -->
+
         <form method="post" action="inscription.php">
             <h1>Inscris-toi !</h1>
                 <div class="formflex">
@@ -86,6 +89,7 @@ $bdd = null;
             ?>
             </div>
         </form>
+
         <!--End form -->
     </article>
 </main>

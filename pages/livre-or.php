@@ -53,7 +53,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); 
     </article>
 
     <article class="a">
-        <?php //Display for the button if someone is connected
+        <?php //Display for the button if someone is connected or not
         if (isset($_SESSION['id'])) {
 
             echo "<a href=commentaire.php><p> Commenter votre Coiffure !</p> </a>";

@@ -60,6 +60,7 @@ $bdd = null;
 <main>
     <article>
         <!--Debut form -->
+
         <form method="post" action="connexion.php">
             <h1>Connecte-toi !</h1>
             <div class="formflex">
@@ -82,6 +83,7 @@ $bdd = null;
             }
             ?>
         </form>
+
         <!--End form -->
     </article>
 </main>
