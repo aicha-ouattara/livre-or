@@ -26,7 +26,7 @@ if(isset($_POST["submit"]))
                 }
                 else
                 {
-                    $error = "Les mots de passe sont identiques !";
+                    $error = "Les mots de passe ne sont pas identiques !";
                 }
             }
             else
@@ -37,7 +37,7 @@ if(isset($_POST["submit"]))
     }
     else
     {
-        $error = "Tous les champs ne sont vides !";
+        $error = "Tous les champs ne sont pas remplis !";
     }
 }
 $bdd = null;
