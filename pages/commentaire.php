@@ -72,7 +72,6 @@ if(isset($_SESSION["id"]))
     <nav class="nav">
 
         <!--Nav PHP-->
-        <a href='../index.php'>Accueil</a>
         <a href='livre-or.php'>Livre d'or</a>
         <?php if (isset($_SESSION['id'])) { ?>
             <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>

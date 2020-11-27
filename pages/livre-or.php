@@ -14,7 +14,6 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); 
 <body>
 <header>
     <nav class="nav">
-        <a href='../index.php'>Accueil</a>
         <a href='livre-or.php'>Livre d'or</a>
 
          <!--Nav PHP-->
@@ -22,7 +21,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=livreor;charset=utf8', 'root', ''); 
             <a href="profil.php?id=" <?php $_SESSION['id'] ?>>Profil</a>
             <a href="commentaire.php?id=" <?php $_SESSION['id'] ?>>Commentaires</a>
             <?php
-        } else { ?><a href="inscription.php">Inscription</a><?php } ?>
+        } else { ?>
+            <a href="../index.php">Accueil</a>
+            <a href="inscription.php">Inscription</a>
+        <?php } ?>
 
         <?php if (isset($_SESSION['id'])) { ?>
             <a href="deconnexion.php">Deconnexion</a>
